@@ -1,0 +1,30 @@
+ 	<filter> 
+	    <filter-name>SqlInjectFilter</filter-name> 
+		<!-- 自定一个SqlInjectIntercepter类 -->
+	    <filter-class>com.bz.mh.SqlInjectIntercepter</filter-class> 
+	    <init-param> 
+	        <param-name>invalidsql</param-name> 
+	        <param-value>
+	        select,insert,delete,from,update,create,destory,drop,alter,and,or,like,exec,count,chr,mid,master,truncate,char,declare,;,--,',",\,|,*,order,by,group,%,union,where,table_schema,grant
+			</param-value> 
+	    </init-param>
+	    <!-- loading page -->
+		<init-param>
+			<param-name>loading</param-name>
+			<param-value>/loading.jsp</param-value>
+		</init-param>
+	    <!-- error page --> 
+	    <init-param> 
+	        <param-name>error</param-name> 
+	        <param-value>/error.jsp</param-value> 
+	    </init-param> 
+	    <!-- debug -->     
+	    <init-param> 
+	        <param-name>debug</param-name> 
+	        <param-value>true</param-value> 
+	    </init-param> 
+   	</filter>     
+   	<filter-mapping>
+		<filter-name>SqlInjectFilter</filter-name>
+		<url-pattern>*</url-pattern>
+	</filter-mapping>
