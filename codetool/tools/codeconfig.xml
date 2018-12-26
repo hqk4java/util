@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<generatorConfiguration>
+
+	<!-- 数据库连接信息  dbType 数据库类型 schema 数据库名 connectURL 数据库连接地址 userId 用户名 password 用户密码 -->
+	<jdbcConnection dbType="mysql" schema="yhact" 
+	connectURL="jdbc:mysql://172.16.10.203:3306/yhact" userId="bd" password="bd"/>
+	 
+	<!-- 数据库类型解析java类型配置 -->
+	<javaTypeResolver>
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 
+		和 NUMERIC 类型解析为java.math.BigDecimal -->
+		<property name="forceBigDecimals" value="false" />
+	</javaTypeResolver>
+
+	<!-- 项目的配置文件设置   web.xml 文件名称  flag 是否生成并覆盖 ftl 文件模板位置-->
+	<projectConfigSetting>
+		<generateFile name="webFtl" ftl="config/web.ftl" flag="false"  targetProject="E:\\test" targetPackage=""/>
+		<generateFile name="springMvcFtl"  ftl="config/spring-mvc.ftl" flag="false"  targetProject="E:\\test" />
+		<generateFile name="springMybatisFtl"  ftl="config/spring-mybatis.ftl" flag="false"  targetProject="E:\\test" />
+		<generateFile name="springRedisFtl"  ftl="config/spring-redis.ftl" flag="false"  targetProject="E:\\test" />
+		<generateFile name="springShiroFtl"  ftl="config/spring-shiro.ftl" flag="false"  targetProject="E:\\test" />
+		<generateFile name="springFtl"  ftl="config/spring.ftl" flag="false"  targetProject="E:\\test" />
+		<generateFile name="shiroEhcacheFtl"  ftl="config/shiro-ehcache.ftl" flag="false"  targetProject="E:\\test"/>
+		<generateFile name="configFtl" ftl="config/config.ftl" flag="false"  targetProject="E:\\test"  />
+		<generateFile name="log4jFtl" ftl="config/log4j.ftl" flag="false"  targetProject="E:\\test"  />
+		<generateFile name="configurationFtl" ftl="config/configuration.ftl" flag="false"  targetProject="E:\\test"  />
+	</projectConfigSetting>
+
+	<!-- 生成文件配置 -->
+	<packageAndTypeSetting>
+		<!-- name 表示没有实际的意义，但是要有唯一性 ,该属性不能修改 targetProject 生成的项目位置  targetPackage 生成的包位置 flag 是否生成，用于有一些特使情况只需要生成某些类，不需要全部生成 -->
+		<package name="domainFtl" targetProject="E:\\workspace\\eclipse\\yhact\\src\\java\\main" targetPackage="com.bluedon.gq.model" ftl="java/domain.ftl" flag="true"/>
+		<package name="controllerFtl" targetProject="E:\\workspace\\eclipse\\yhact\\src\\java\\main" targetPackage="com.bluedon.gq.controller.admin" ftl="java/controller.ftl" flag="true"/>
+		<package name="serviceFtl" targetProject="E:\\workspace\\eclipse\\yhact\\src\\java\\main" targetPackage="com.bluedon.gq.service" ftl="java/service.ftl" flag="true" />
+		<package name="serviceImplFtl" targetProject="E:\\workspace\\eclipse\\yhact\\src\\java\\main" targetPackage="com.bluedon.gq.service" ftl="java/serviceImpl.ftl" flag="true"/>
+		<package name="daoFtl" targetProject="E:\\workspace\\eclipse\\yhact\\src\\java\\main" targetPackage="com.bluedon.gq.dao.mybatis" ftl="java/dao.ftl" flag="true" />
+		<package name="mapperFtl" targetProject="E:\\workspace\\eclipse\\yhact\\src\\java\\main" targetPackage="com.bluedon.gq.mapping" ftl="java/mapper.ftl" flag="true"/>
+		<package name="voFtl" targetProject="E:\\workspace\\eclipse\\yhact\\src\\java\\main" targetPackage="com.bluedon.gq.vo" ftl="java/vo.ftl" flag="true"/>
+	</packageAndTypeSetting>
+
+	<!-- jsp页面设置 -->
+	<jspSetting >
+	<!-- targetProject 框架生成位置 style 框架的类型 version 版本 flag 是否覆盖生成-->
+		<modelSetting  targetProject="E:\\test" style="bootstrap" version="1.0" flag="true" /> 
+		<page name="jsp_addFtl" targetProject="E:\\workspace\\eclipse\\yhact\\WebContent\\jsp" targetPackage="" ftl="jsp/jspTemplate_add.ftl" flag="true"/>
+		<page name="jsp_editFtl" targetProject="E:\\workspace\\eclipse\\yhact\\WebContent\\jsp" targetPackage="" ftl="jsp/jspTemplate_edit.ftl" flag="true"/>
+		<page name="jsp_listFtl" targetProject="E:\\workspace\\eclipse\\yhact\\WebContent\\jsp" targetPackage="" ftl="jsp/jspTemplate_list.ftl" flag="true"/>
+		<page name="jsp_viewFtl" targetProject="E:\\workspace\\eclipse\\yhact\\WebContent\\jsp" targetPackage="" ftl="jsp/jspTemplate_view.ftl" flag="true"/>
+
+	</jspSetting>
+
+	<!-- 生成基础模块的表-->
+	<baseDbGenerate>
+		<config name="table" flag="false" /><!-- 是否产生table -->
+		
+	</baseDbGenerate>
+
+	<tableSetting>
+		<!-- name数据表名 module 模块名 domainName 对应实体名 aliasName 数据库表名对应的别名,comment表的注释，需要自己定义，不从数据库中读取，用于生成各模块的注释 -->		
+		<table name="t_sys_advice" module="sys" domain="SysAdvice" aliasName="m" comment="投诉与建议"/>
+	</tableSetting>
+
+</generatorConfiguration>
